@@ -16,38 +16,39 @@ export default function StartCall() {
           exit="exit"
           variants={{
             initial: { opacity: 0 },
-            enter: { opacity: 1 },
-            exit: { opacity: 0 },
+            enter: { opacity: 1, transition: { duration: 0.5 } },
+            exit: { opacity: 0, transition: { duration: 0.3 } },
           }}
         >
-          <AnimatePresence>
-            <motion.div
-              variants={{
-                initial: { scale: 0.5 },
-                enter: { scale: 1 },
-                exit: { scale: 0.5 },
+          <motion.div
+            variants={{
+              initial: { scale: 0.8, opacity: 0 },
+              enter: { scale: 1, opacity: 1, transition: { duration: 0.5 } },
+              exit: { scale: 0.8, opacity: 0, transition: { duration: 0.3 } },
+            }}
+            initial="initial"
+            animate="enter"
+            exit="exit"
+          >
+            <Button
+              className={"z-50 flex items-center gap-1.5"}
+              onClick={() => {
+                connect()
+                  .then(() => {})
+                  .catch(() => {})
+                  .finally(() => {});
               }}
             >
-              <Button
-                className={"z-50 flex items-center gap-1.5"}
-                onClick={() => {
-                  connect()
-                    .then(() => {})
-                    .catch(() => {})
-                    .finally(() => {});
-                }}
-              >
-                <span>
-                  <Phone
-                    className={"size-4 opacity-50"}
-                    strokeWidth={2}
-                    stroke={"currentColor"}
-                  />
-                </span>
-                <span>Start Call</span>
-              </Button>
-            </motion.div>
-          </AnimatePresence>
+              <span>
+                <Phone
+                  className={"size-4 opacity-50"}
+                  strokeWidth={2}
+                  stroke={"currentColor"}
+                />
+              </span>
+              <span>Start Call</span>
+            </Button>
+          </motion.div>
         </motion.div>
       ) : null}
     </AnimatePresence>

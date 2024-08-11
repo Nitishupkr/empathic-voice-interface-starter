@@ -16,15 +16,9 @@ const Messages = forwardRef<
       layoutScroll
       className={"grow rounded-md overflow-auto p-4"}
       ref={ref}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
     >
       <motion.div
         className={"max-w-2xl mx-auto w-full flex flex-col gap-4 pb-24"}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delayChildren: 0.3, staggerChildren: 0.2 }}
       >
         <AnimatePresence mode={"popLayout"}>
           {messages.map((msg, index) => {
@@ -44,19 +38,15 @@ const Messages = forwardRef<
                   initial={{
                     opacity: 0,
                     y: 10,
-                    scale: 0.95,
                   }}
                   animate={{
                     opacity: 1,
                     y: 0,
-                    scale: 1,
                   }}
                   exit={{
                     opacity: 0,
-                    y: 10,
-                    scale: 0.95,
+                    y: 0,
                   }}
-                  transition={{ duration: 0.4 }}
                 >
                   <div
                     className={cn(
